@@ -1,0 +1,77 @@
+local OrionLib = loadstring(game:HttpGet(('https://raw.githubusercontent.com/jensonhirst/Orion/main/source')))()
+local Player = game.Players.LocalPlayer
+local Window = OrionLib:MakeWindow({Name = "Key System", HidePremium = false,IntroText = "db.cc key system", SaveConfig = true, ConfigFolder = "OrionTest"})
+
+OrionLib:MakeNotification({
+    Name = "Logged in!",
+    Content = "You are logged in as " .. Player.Name .. ".",
+    Image = "rbxassetid://4483345998",
+    Time = 5
+})
+
+_G.Key = "312788"
+_G.KeyInput = "string"
+
+function MakeScriptHub()
+    loadstring(game:HttpGet("https://raw.githubusercontent.com/nduc0710/Muscle-Legends/refs/heads/main/MuscleLegends"))();
+end
+
+function CorrectKeyNotification()
+    OrionLib:MakeNotification({
+    Name = "Correct Key",
+    Content = "You have entered the correct key!",
+    Image = "rbxassetid://4483345998",
+    Time = 5
+})
+end
+
+function InCorrectKeyNotification()
+    OrionLib:MakeNotification({
+    Name = "InCorrect Key",
+    Content = "You have entered the incorrect key!",
+    Image = "rbxassetid://4483345998",
+    Time = 5
+})
+end
+
+local Tab = Window:MakeTab({
+	Name = "Key System",
+	Icon = "rbxassetid://4483345998",
+	PremiumOnly = false
+})
+
+Tab:AddButton({
+    Name = "Get Key",
+    Callback = function()
+        local link = "https://link-target.net/1338377/VJmCLicwK4mn" -- Replace with your actual key link
+        setclipboard(link)
+        OrionLib:MakeNotification({
+            Name = "Copied!",
+            Content = "Key link copied to clipboard.",
+            Image = "rbxassetid://4483345998",
+            Time = 5
+        })
+    end
+})
+
+Tab:AddTextbox({
+	Name = "Enter Key",
+	Default = " ",
+	TextDisappear = true,
+	Callback = function(Value)
+		_G.KeyInput = Value
+        print(KeyInput)
+	end	  
+})
+
+Tab:AddButton({
+	Name = "Check Key",
+	Callback = function()
+      		if _G.KeyInput == _G.Key then
+            MakeScriptHub()
+            CorrectKeyNotification()
+            else
+            InCorrectKeyNotification()
+            end
+  	end    
+})
