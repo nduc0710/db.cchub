@@ -56,7 +56,7 @@ Tab:AddButton({
 
 Tab:AddTextbox({
 	Name = "Enter Key",
-	Default = " ",
+	Default = "",
 	TextDisappear = false,
 	Callback = function(Value)
 		_G.KeyInput = Value
